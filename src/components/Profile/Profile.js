@@ -1,9 +1,6 @@
 import PropTypes from 'prop-types';
+import ProfileStats from '../ProfileStats';
 import s from './Profile.module.css';
-
-const capitalize = word => {
-  return word.slice(0, 1).toUpperCase() + word.slice(1);
-};
 
 const Profile = ({ username, tag, location, avatar, stats }) => {
   return (
@@ -16,11 +13,10 @@ const Profile = ({ username, tag, location, avatar, stats }) => {
       </div>
       <ul className={s.stats}>
         {Object.entries(stats).map(item => {
-          const [labelValue, quantityValue] = item;
+          const [label, quantity] = item;
           return (
-            <li className={s.statsItem} key={labelValue}>
-              <span className={s.label}>{capitalize(labelValue)}</span>
-              <span className={s.quantity}>{quantityValue.toLocaleString()}</span>
+            <li className={s.statsItem} key={label}>
+              <ProfileStats label={label} quantity={quantity} />
             </li>
           );
         })}
@@ -34,11 +30,7 @@ Profile.propTypes = {
   tag: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
-  stats: PropTypes.shape({
-    followers: PropTypes.number,
-    views: PropTypes.number,
-    likes: PropTypes.number,
-  }).isRequired,
+  stats: PropTypes.object.isRequired,
 };
 
 export default Profile;
