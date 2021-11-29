@@ -1,9 +1,6 @@
 import PropTypes from 'prop-types';
 import s from './ProfileStats.module.css';
-
-const capitalize = word => {
-  return word.slice(0, 1).toUpperCase() + word.slice(1);
-};
+import capitalize from '../capitalize';
 
 const ProfileStats = ({ label, quantity }) => {
   return (

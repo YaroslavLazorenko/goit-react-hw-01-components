@@ -1,0 +1,13 @@
+.row:nth-child(even) {
+  background-color: #fdf;
+}
+
+.row:nth-child(odd) {
+  background-color: #dfd;
+}
+
+.data {
+  padding: 10px 0;
+
+  font-size: 18px;
+}

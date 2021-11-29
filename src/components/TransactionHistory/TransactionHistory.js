@@ -1,21 +1,37 @@
 import PropTypes from 'prop-types';
 import s from './TransactionHistory.module.css';
+import TransactionTableRow from '../TransactionTableRow';
+import capitalize from '../capitalize';
 
-const TransactionHistory = ({ friends }) => {
+const TransactionHistory = ({ items }) => {
   return (
-    <ul className={s.friendList}>
-      {friends.map(({ avatar, name, isOnline, id }) => {
-        return (
-          <div />
-          //   <FriendListItem avatar={avatar} name={name} isOnline={isOnline} key={id.toString()} />
-        );
-      })}
-    </ul>
+    <table className={s.transactionHistory}>
+      <thead className={s.headRow}>
+        <tr>
+          <th className={s.headCell}>Type</th>
+          <th className={s.headCell}>Amount</th>
+          <th className={s.headCell}>Currency</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {items.map(({ id, type, amount, currency }) => {
+          return (
+            <TransactionTableRow
+              type={capitalize(type)}
+              amount={amount}
+              currency={currency}
+              key={id}
+            />
+          );
+        })}
+      </tbody>
+    </table>
   );
 };
 
 TransactionHistory.propTypes = {
-  friends: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number.isRequired })),
+  items: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.string.isRequired })),
 };
 
 export default TransactionHistory;
