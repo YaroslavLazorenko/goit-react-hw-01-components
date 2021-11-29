@@ -1,0 +1,49 @@
+.item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0 auto;
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 3px 3px 4px 1px rgba(0, 0, 255, 0.15);
+  overflow: hidden;
+  text-align: center;
+  background-color: #fff;
+}
+
+.item:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.statusIndicator {
+  display: block;
+  margin: 0 10px 0;
+  width: 20px;
+  height: 20px;
+
+  border-radius: 50%;
+}
+
+.isOnline {
+  composes: statusIndicator;
+  background-color: #44cc44;
+}
+
+.isOffline {
+  composes: statusIndicator;
+  background-color: #cc4444;
+}
+
+.avatar {
+  margin-right: 20px;
+
+  border: 1px solid transparent;
+  border-radius: 7px;
+}
+
+.name {
+  font-weight: 700;
+  font-size: 24px;
+}

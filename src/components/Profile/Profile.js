@@ -12,8 +12,7 @@ const Profile = ({ username, tag, location, avatar, stats }) => {
         <p className={s.location}>{location}</p>
       </div>
       <ul className={s.stats}>
-        {Object.entries(stats).map(item => {
-          const [label, quantity] = item;
+        {Object.entries(stats).map(([label, quantity]) => {
           return (
             <li className={s.statsItem} key={label}>
               <ProfileStats label={label} quantity={quantity} />
